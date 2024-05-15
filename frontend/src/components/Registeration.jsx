@@ -29,7 +29,7 @@ const Registeration = () => {
       return;
     }
     try {
-      await axios.post("http://localhost:5000/register", formData);
+      await axios.post("https://skin-and-you-backend.vercel.app/register", formData);
       alert("Appointment booked successfully! Please check your email.");
       setFormData({ name: "", email: "", phone: "", date: "" });
     } catch (err) {
