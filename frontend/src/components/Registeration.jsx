@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from 'axios';
 
 const Registeration = () => {
   const [formData, setFormData] = useState({
