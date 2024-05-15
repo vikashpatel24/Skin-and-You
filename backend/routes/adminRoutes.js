@@ -3,6 +3,6 @@ const {
   getAllAppointments,
 } = require("../controllers/getAllAppointments");
 
-router.get("/users", getAllAppointments);
+router.get("/bookings", getAllAppointments);
 
 module.exports = router;
