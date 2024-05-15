@@ -9,6 +9,7 @@ const Registeration = () => {
     date: "",
   });
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,15 +20,13 @@ const Registeration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Basic validation
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.phone ||
-      !formData.date
-    ) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.date) {
       setErrors({ message: "Please fill out all fields." });
       return;
     }
+
+    setLoading(true);
+
     try {
       await axios.post("https://skin-and-you-backend.vercel.app/register", formData);
       alert("Appointment booked successfully! Please check your email.");
@@ -35,6 +34,8 @@ const Registeration = () => {
     } catch (err) {
       console.error(err);
       alert("Failed to book appointment. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -98,9 +99,10 @@ const Registeration = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="bg-blue-500  text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            disabled={loading}
           >
-            Book
+            {loading ? "Booking..." : "Book"}
           </button>
         </div>
       </form>
