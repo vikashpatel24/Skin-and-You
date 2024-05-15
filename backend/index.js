@@ -26,8 +26,6 @@ app.use("/", allRoutes);
 const userRoutes = require("./routes/adminRoutes");
 app.use("/admin", userRoutes);
 
-const emailRoute = require("./routes/emailRoutes");
-app.use("/api", emailRoute);
 
 app.get("/", (req, res) => {
     res.send("Hello, Skin&You!");
